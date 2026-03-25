@@ -1,15 +1,18 @@
 import React from "react";
-import { Spinner } from "./Spinner";
+import { Spinner } from "../index";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: "primary" | "secondary" | "danger" | "outline";
   size?: "sm" | "md" | "lg";
   loading?: boolean;
+  type: "button" | "submit" | "reset";
+  name?: string;
 };
 
 export const Button: React.FC<ButtonProps> = ({
   children,
-  name="Button Name",
+  type,
+  name = "Button Name",
   variant = "primary",
   size = "md",
   loading = false,
@@ -35,6 +38,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      type={type}
       className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${
         (disabled || loading) && "opacity-50 cursor-not-allowed"
       } ${className}`}
