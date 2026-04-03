@@ -1,21 +1,32 @@
-import React, { useState } from "react";
-import { Button } from "../../../components/Elements/index";
-import { Form, InputField } from "../../../components/form/index";
-import z from "zod";
+import React, { useState } from 'react';
+import { Button } from '../../../components/Elements/index';
+import { Form, InputField } from '../../../components/form/index';
+import z from 'zod';
+import { useLogin } from '../../../lib/auth';
+import { useNavigate } from 'react-router-dom';
 
 const loginSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
+  email: z.string().email('Invalid email address'),
+  password: z.string().min(6, 'Password must be at least 6 characters'),
 });
 
 type LoginValues = z.infer<typeof loginSchema>;
 
 export const Login = () => {
   const [loading, setLoading] = useState(false);
+  const { mutate, isPending } = useLogin();
+  const navigate = useNavigate();
 
   const handleSubmit = (values: LoginValues) => {
-    console.log("clicked", values);
-    setLoading(true);
+    mutate(values, {
+      onSuccess: (user) => {
+        console.log('Login success:', user);
+        navigate('/dashboard');
+      },
+      onError: (error) => {
+        console.log('Login failed:', error);
+      },
+    });
   };
 
   return (
@@ -28,25 +39,18 @@ export const Login = () => {
               Inputicon="a"
               className="input-field"
               label="Email Address"
-              error={formState.errors["email"]}
-              registration={register("email")}
+              error={formState.errors['email']}
+              registration={register('email')}
             />
             <InputField
               type="password"
               Inputicon="a"
               className="input-field"
               label="Enter Password"
-              error={formState.errors["password"]}
-              registration={register("password")}
+              error={formState.errors['password']}
+              registration={register('password')}
             />
-            <Button
-              name="Login"
-              type="submit"
-              variant="primary"
-              size="md"
-              loading={loading}
-              disabled={loading}
-            />
+            <Button name="Login" type="submit" variant="primary" size="md" loading={isPending} disabled={isPending} />
           </div>
         )}
       </Form>
