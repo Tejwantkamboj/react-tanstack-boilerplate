@@ -22,3 +22,5 @@ export const AuthLayout = () => {
     </Suspense>
   );
 };
+
+

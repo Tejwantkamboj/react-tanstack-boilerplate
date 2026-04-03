@@ -21,7 +21,7 @@ export const Login = () => {
     mutate(values, {
       onSuccess: (user) => {
         console.log('Login success:', user);
-        navigate('/dashboard');
+         navigate(user.role === 'admin' ? '/admin' : '/user');
       },
       onError: (error) => {
         console.log('Login failed:', error);

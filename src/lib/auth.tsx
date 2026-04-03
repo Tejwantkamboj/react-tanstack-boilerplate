@@ -5,6 +5,7 @@ import type { UserResponse, LoginValues, RegisterValues } from '../features/auth
 import { configureAuth } from 'react-query-auth';
 
 async function handleUserResponse(data: UserResponse) {
+  console.log('data mdlko;wqsa', data);
   const { tokens, user } = data;
   storage.setToken(tokens.access.token);
   return user;

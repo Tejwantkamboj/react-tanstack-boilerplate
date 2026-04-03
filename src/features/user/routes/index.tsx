@@ -1,3 +1,4 @@
-const userRoutes: { path: string; element: void }[] = [];
+import type { RouteObject } from 'react-router-dom';
+import { lazyImport } from '../../../lib/lazyImport';
 
-export default userRoutes;
+export const userRoutes: RouteObject[] = [];

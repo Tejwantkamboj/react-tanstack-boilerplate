@@ -1,0 +1,31 @@
+@reference "../../../index.css";
+
+/* Header container */
+.header {
+  @apply flex justify-between items-center px-6 py-4 bg-gray-100 border-b border-gray-300;
+}
+
+/* Logo */
+.logo {
+  @apply text-xl font-bold text-gray-800;
+}
+
+/* Nav list */
+.nav-list {
+  @apply flex gap-6 list-none m-0 p-0;
+}
+
+/* Nav links */
+.nav-link {
+  @apply text-gray-700 no-underline text-base transition-colors duration-200;
+}
+
+/* Hover effect */
+.nav-link:hover {
+  @apply text-blue-500;
+}
+
+/* Active link */
+.active {
+  @apply text-blue-600 font-semibold;
+}
