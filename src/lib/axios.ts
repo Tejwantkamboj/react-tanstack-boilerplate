@@ -31,10 +31,10 @@ api.interceptors.response.use(
     const status = error.response?.status;
     const message = (error.response?.data as any)?.message || error.message;
 
-    if (status === 401) {
-      storage.clearToken();
-      window.location.href = '/auth/login';
-    }
+    // if (status === 401) {
+    //   storage.clearToken();
+    //   window.location.href = '/auth/login';
+    // }
 
     toast.dismiss();
     toast.error(message);

@@ -1,7 +1,8 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Spinner } from '../../Elements';
 import Header from './Header';
+import SideBar from './SideBar';
 
 export const AdminLayout = () => {
   return (
@@ -12,12 +13,13 @@ export const AdminLayout = () => {
         </div>
       }
     >
-      <Header />
-      <main className="w-100 main-block">
-        <div style={{ minHeight: '90vh' }}>
-          <Outlet />
+      <div className="flex my-6 mx-8">
+        <div className="flex">
+          <SideBar />
+          <Header />
         </div>
-      </main>
+        <Outlet />
+      </div>
     </Suspense>
   );
 };

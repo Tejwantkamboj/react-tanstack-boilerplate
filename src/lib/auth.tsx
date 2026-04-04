@@ -16,9 +16,10 @@ async function loadUser() {
 
   try {
     const response = await getCurrentUser();
-    return await handleUserResponse(response.data);
+    // return await handleUserResponse(response.data);
+    return response.data;
   } catch (error) {
-    storage.clearToken(); // 🔥 important
+    storage.clearToken();
     return null;
   }
 }

@@ -1,29 +1,26 @@
-import React, { useState } from 'react';
 import { Button } from '../../../components/Elements/index';
 import { Form, InputField } from '../../../components/form/index';
 import z from 'zod';
 import { useLogin } from '../../../lib/auth';
 import { useNavigate } from 'react-router-dom';
+import type { LoginValues, User } from '../types';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
   password: z.string().min(6, 'Password must be at least 6 characters'),
 });
 
-type LoginValues = z.infer<typeof loginSchema>;
-
 export const Login = () => {
-  const [loading, setLoading] = useState(false);
   const { mutate, isPending } = useLogin();
   const navigate = useNavigate();
 
   const handleSubmit = (values: LoginValues) => {
     mutate(values, {
-      onSuccess: (user) => {
+      onSuccess: (user: User) => {
         console.log('Login success:', user);
-         navigate(user.role === 'admin' ? '/admin' : '/user');
+        navigate(user.role === 'admin' ? '/admin' : '/user');
       },
-      onError: (error) => {
+      onError: (error: any) => {
         console.log('Login failed:', error);
       },
     });

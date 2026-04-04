@@ -47,6 +47,7 @@ export type User = {
   lastName: string;
   isEmailVerified: boolean;
   phoneNumber: string;
+  role: string;
 };
 
 export type UserResponse = {

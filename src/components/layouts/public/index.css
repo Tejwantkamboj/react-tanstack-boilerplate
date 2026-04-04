@@ -2,7 +2,13 @@
 
 /* Header container */
 .header {
-  @apply flex justify-between items-center px-6 py-4 bg-gray-100 border-b border-gray-300;
+  @apply flex items-center px-6 py-4 bg-gray-100 border-b border-gray-300 rounded-2xl;
+  max-width: auto;
+  margin: 16px auto;
+}
+
+nav {
+  @apply flex-1 flex justify-center rounded-2xl;
 }
 
 /* Logo */
@@ -10,9 +16,8 @@
   @apply text-xl font-bold text-gray-800;
 }
 
-/* Nav list */
 .nav-list {
-  @apply flex gap-6 list-none m-0 p-0;
+  @apply flex gap-6 list-none m-0 p-0 items-center;
 }
 
 /* Nav links */
@@ -27,5 +32,5 @@
 
 /* Active link */
 .active {
-  @apply text-blue-600 font-semibold;
+  @apply text-black font-semibold;
 }
