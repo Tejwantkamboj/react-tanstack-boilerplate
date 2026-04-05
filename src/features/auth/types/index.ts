@@ -18,7 +18,7 @@ export type RegisterValues = {
   lastName: string;
   email: string;
   password: string;
-  confirmPassword: string;
+  phone: string;
 };
 
 export type ForgotPassword = {

@@ -5,7 +5,6 @@ import type { UserResponse, LoginValues, RegisterValues } from '../features/auth
 import { configureAuth } from 'react-query-auth';
 
 async function handleUserResponse(data: UserResponse) {
-  console.log('data mdlko;wqsa', data);
   const { tokens, user } = data;
   storage.setToken(tokens.access.token);
   return user;
@@ -32,8 +31,8 @@ async function loginFn(data: LoginValues) {
 
 async function registerFn(data: RegisterValues) {
   const response = await registerWithEmailAndPassword(data);
-  const user = await handleUserResponse(response.data);
-  return user;
+  // const user = await handleUserResponse(response.data);
+  return response.data;
 }
 
 async function logoutFn() {

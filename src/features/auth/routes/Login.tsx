@@ -15,15 +15,12 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (values: LoginValues) => {
-    console.log('values of login data', values);
-    return;
     mutate(values, {
       onSuccess: (user: User) => {
-        console.log('Login success:', user);
         navigate(user.role === 'admin' ? '/admin' : '/user');
       },
       onError: (error: any) => {
-        console.log('Login failed:', error);
+        console.error('Login failed:', error);
       },
     });
   };
