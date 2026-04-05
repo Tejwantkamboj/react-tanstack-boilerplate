@@ -2,7 +2,7 @@ import { Button } from '../../../components/Elements/index';
 import { Form, InputField } from '../../../components/form/index';
 import z from 'zod';
 import { useLogin } from '../../../lib/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import type { LoginValues, User } from '../types';
 
 const loginSchema = z.object({
@@ -15,6 +15,8 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (values: LoginValues) => {
+    console.log('values of login data', values);
+    return;
     mutate(values, {
       onSuccess: (user: User) => {
         console.log('Login success:', user);
@@ -27,7 +29,13 @@ export const Login = () => {
   };
 
   return (
-    <div>
+    <div className="border-2 p-3 rounded-2xl">
+      <div>
+        <h3>Welcome to our platform!</h3>
+      </div>
+      <div className="flex items-center justify-center">
+        <h3>Login</h3>
+      </div>
       <Form schema={loginSchema} onSubmit={handleSubmit}>
         {({ register, formState }) => (
           <div className="space-y-4 max-w-2xl mx-auto flex-1">
@@ -47,7 +55,25 @@ export const Login = () => {
               error={formState.errors['password']}
               registration={register('password')}
             />
-            <Button name="Login" type="submit" variant="primary" size="md" loading={isPending} disabled={isPending} />
+            <Button
+              className="w-full"
+              name="Login"
+              type="submit"
+              variant="primary"
+              size="md"
+              loading={isPending}
+              disabled={isPending}
+            />
+
+            <p className="text-center mt-2 text-gray-600">
+              Not a member?{' '}
+              <Link
+                to="/auth/register"
+                className="text-blue-500 hover:text-black font-medium transition-colors duration-200"
+              >
+                Create New Account
+              </Link>
+            </p>
           </div>
         )}
       </Form>

@@ -8,17 +8,19 @@ export const AdminLayout = () => {
   return (
     <Suspense
       fallback={
-        <div className="h-90-vh w-100 d-flex align-items-center justify-content-center">
+        <div className="h-screen flex items-center justify-center">
           <Spinner size="lg" />
         </div>
       }
     >
-      <div className="flex my-6 mx-8">
-        <div className="flex">
-          <SideBar />
+      <div className="flex h-screen">
+        <SideBar />
+        <div className="flex flex-col flex-1">
           <Header />
+          <div className="p-6 overflow-auto flex-1">
+            <Outlet />
+          </div>
         </div>
-        <Outlet />
       </div>
     </Suspense>
   );

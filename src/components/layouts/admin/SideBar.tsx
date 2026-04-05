@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import { FaBars, FaUsers, FaTachometerAlt, FaFolderOpen } from 'react-icons/fa';
-
+import "./index.css"
 const menuItems = [
   {
     name: 'Dashboard',
@@ -32,7 +32,7 @@ const SideBar: React.FC = () => {
       </div>
 
       {/* Menu */}
-      <nav className="mt-5">
+      <nav className="sidebar-scroll">
         {menuItems.map((item) => (
           <NavLink
             key={item.name}

@@ -1,8 +1,12 @@
 import type { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import './index.css';
+import { Button } from '../../Elements';
+import { useNavigate } from 'react-router-dom';
 
 const Header: FC = () => {
+  const navigate = useNavigate();
+
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
@@ -28,6 +32,10 @@ const Header: FC = () => {
           ))}
         </ul>
       </nav>
+      <div>
+        <Button type="button" name="Register" onClick={() => navigate('auth/register')} />
+        <Button type="button" name="Login" onClick={() => navigate('auth/login')} />
+      </div>
     </header>
   );
 };

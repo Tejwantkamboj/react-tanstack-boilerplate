@@ -2,7 +2,6 @@ import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Spinner } from '../../Elements';
 import Header from './Header';
-  
 
 export const AuthLayout = () => {
   return (
@@ -13,14 +12,12 @@ export const AuthLayout = () => {
         </div>
       }
     >
-      <Header />
-      <main className="w-100 main-block">
-        <div style={{ minHeight: '90vh' }}>
-          <Outlet />  
+      {/* <Header /> */}
+      <main className="">
+        <div className="flex items-center justify-center min-h-screen">
+          <Outlet />
         </div>
       </main>
     </Suspense>
   );
 };
-
-

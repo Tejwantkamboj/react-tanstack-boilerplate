@@ -1,31 +1,58 @@
 @reference "../../../index.css";
 
-/* Header container */
-.header {
-  @apply flex justify-between items-center px-6 py-4 bg-gray-100 border-b border-gray-300;
-}
+@layer components {
+  /* ===== Layout ===== */
 
-/* Logo */
-.logo {
-  @apply text-xl font-bold text-gray-800;
-}
+  .admin-layout {
+    @apply flex h-screen overflow-hidden;
+  }
 
-/* Nav list */
-.nav-list {
-  @apply flex gap-6 list-none m-0 p-0;
-}
+  .admin-main {
+    @apply flex flex-col flex-1;
+  }
 
-/* Nav links */
-.nav-link {
-  @apply text-gray-700 no-underline text-base transition-colors duration-200;
-}
+  .admin-content {
+    @apply flex-1 p-6 overflow-y-auto bg-gray-50;
+  }
 
-/* Hover effect */
-.nav-link:hover {
-  @apply text-blue-500;
-}
+  /* ===== Sidebar ===== */
 
-/* Active link */
-.active {
-  @apply text-blue-600 font-semibold;
+  .sidebar {
+    @apply w-64 h-screen bg-gray-800 text-white flex flex-col;
+  }
+
+  .sidebar-scroll {
+    @apply flex-1 overflow-y-auto;
+  }
+
+  /* Optional scrollbar styling */
+  .sidebar-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .sidebar-scroll::-webkit-scrollbar-thumb {
+    @apply bg-gray-600 rounded;
+  }
+
+  /* ===== Header ===== */
+
+  .header {
+    @apply sticky top-0 z-10 flex justify-between items-center 
+           px-6 py-4 bg-white border-b border-gray-200;
+  }
+
+  /* ===== Nav Links ===== */
+
+  .nav-list {
+    @apply flex flex-col gap-2 p-4;
+  }
+
+  .nav-link {
+    @apply block px-3 py-2 rounded-md text-gray-300 
+           hover:bg-gray-700 hover:text-white transition;
+  }
+
+  .nav-link.active {
+    @apply bg-gray-900 text-white;
+  }
 }

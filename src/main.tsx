@@ -9,7 +9,18 @@ import { Toaster } from 'react-hot-toast';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const theme = createTheme();
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 2,
+      refetchOnWindowFocus: false,
+      retry: 1,
+    },
+    mutations: {
+      retry: 1,
+    },
+  },
+});
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

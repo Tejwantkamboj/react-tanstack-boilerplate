@@ -6,7 +6,7 @@ export type GetUsersParams = {
 
 export type AdminUser = {
   id?: string;
-  _id?: string;
+  _id: string;
   name?: string;
   firstName?: string;
   lastName?: string;
