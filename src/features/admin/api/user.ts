@@ -1,9 +1,10 @@
 import { useQueryClient, keepPreviousData, useQuery, useMutation } from '@tanstack/react-query';
 import api from '../../../lib/axios';
-import type { AdminUser, GetUsersParams, UsersListResponse } from '../types/index';
-import toast from 'react-hot-toast';
+import type { AdminUser, GetUsersParams, UsersListResponse, PaginationType } from '../types/index';
 
-export const getUsers = async ({ search = '', page = 1, limit = 10 }: GetUsersParams = {}) => {
+export const getUsers = async ({ search = '', page = 1, limit = 10 }: GetUsersParams = {}): Promise<
+  PaginationType<AdminUser>
+> => {
   const response = await api.get('/admin/user', {
     params: {
       search: search || '',
@@ -11,7 +12,7 @@ export const getUsers = async ({ search = '', page = 1, limit = 10 }: GetUsersPa
       limit: limit || 10,
     },
   });
-  return response.data as Promise<UsersListResponse>;
+  return response.data;
 };
 
 export const deleteUser = async (id: string) => {
