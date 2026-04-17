@@ -7,7 +7,7 @@ import 'react-phone-number-input/style.css';
 
 type InputFieldProps = {
   name: string;
-  control: Control<any>;
+  control: any;
   label: string;
   error?: { message?: string };
   className?: string;

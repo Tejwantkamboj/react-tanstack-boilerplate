@@ -7,7 +7,7 @@ import type { InputProps } from 'react-otp-input';
 type InputFieldProps = {
   name: string;
   error?: { message?: string };
-  control: Control<any>;
+  control: any;
   label: string;
   className?: string;
 };
