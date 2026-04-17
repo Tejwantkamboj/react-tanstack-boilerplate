@@ -5,10 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && ls -la",
     "type-check": "tsc --noEmit",
     "lint": "eslint .",
     "preview": "vite preview"
+  },
+  "engines": {
+    "node": "20.x"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^41.4.2",
